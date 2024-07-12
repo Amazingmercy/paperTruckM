@@ -1,0 +1,134 @@
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.body{
+    background-color: #f4f4f4;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.main-cover{
+    display: flex;
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.box {
+    flex: 1;
+    max-width: 500px;
+}
+.box img {
+    max-width: 80%;
+    height: auto;
+}
+.login-box , .analytics-box{
+    flex: 1;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.register-box {
+    flex: 1;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.btn-custom {
+    background-color: #b5651d;
+    color: white;
+}
+.btn-custom:hover {
+    background-color: #804a00;
+}
+h2 {
+    color: #87cefa;
+    margin-bottom: 20px;
+}
+.sidebar {
+    width: 250px;
+    background-color: #b5651d;
+    color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+}
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin: 15px 0;
+    flex: space-evenly;
+    padding: 30px;
+    border-radius: 30px;
+    font-weight: 500;
+    text-align: center;
+}
+.sidebar a:hover {
+    background-color: #87cefa;
+    color:#804a00;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 30px;
+}
+.header {
+    background-color: #87cefa;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+.header img {
+    height: 50px;
+    margin-right: 10px;
+}
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+.analytics-box {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 50px;
+}
+.analytics-box img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+.notification {
+    background-color: #b5651d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.hidden {
+    display: none;
+}

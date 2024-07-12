@@ -1,0 +1,190 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.body {
+    background-color: #f4f4f4;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #87cefa;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.main-cover {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #b5651d;
+    color: #fff;
+    padding: 30px;
+    height: calc(100% - 0px); /* Adjust height to fit within main-cover */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.sidebar .firstNav{
+    margin-top: 30%;
+}
+
+.sidebar a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    color: #f4f4f4;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.notification {
+    background-color: #b5651d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.analytics-box {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.analytics-box img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.appName{
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color: #804a00;
+}
+#logoutButton{
+    background-color: #b5651d;
+    color: #f4f4f4;
+}
+
+#virtualBin {
+    position: absolute; /* Positioning absolute to center it within the parent */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centering trick */
+    text-align: center; /* Center text and child elements horizontally */
+}
+
+.bin-container {
+    width: 200px;
+    height: 400px;
+    background-color: #b5651d;
+    position: relative; /* Relative positioning to contain the absolutely positioned bin cover */
+    border-radius: 0 0 40px 40px;
+    overflow: hidden; /* Ensure the bin cover stays within the container */
+    margin-top: 50px; /* Adding margin to create space above */
+}
+
+.bin-cover {
+    background-color: #87cefa;
+    width: 100%; /* Ensure it takes the full width of the container */
+    height: 0; /* Start with height 0 to animate the increase */
+    position: absolute; /* Positioning absolute to control from bottom */
+    bottom: 0; /* Start from the bottom of the container */
+    transition: height 0.5s ease; /* Smooth transition animation */
+    border-radius: 0 0 40px 40px;
+}
+
+
+#virtualBin h3{
+    color: #b5651d;
+    font-size: 30px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+.points {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    color:#31a6ee;
+}
+
+.btn-custom {
+    background-color: #31a6ee; /* Replace with your desired background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+}
+
+.btn-custom:hover {
+    background-color: #87cefa; /* Darker shade for hover effect */
+}
+
+.btn-custom:focus, .btn-custom:active {
+    box-shadow: none; /* Remove focus/active outline */
+}
+
+

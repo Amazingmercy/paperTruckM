@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Truck</title>
+    <!-- Bootstrap CSS -->
+    <link href="/styles/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/styles/styles2.css">
+</head>
+
+<body>
+    <div class="body">
+        <div class="header">
+            <div class="logo">
+                <img src="/images/paperTruck2.png" alt="Papertruck">
+                <span class="appName">Paper Truck</span>
+            </div>
+            <div>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="btn" id="logoutButton">Logout</button>
+                </form>
+            </div>
+        </div>
+        <div class="main-cover">
+            <div class="sidebar">
+                <% if (user.role === 'user') { %>
+                    <h3><%= user.schoolName %></h3>
+                    <a href="#" onclick="showSection('home')" class="firstNav">Home</a>
+                    <a href="#" onclick="showSection('virtualBin')">Virtual Bin</a>
+                    <a href="#" onclick="showSection('rank')">Ladder Board</a>
+                    <a href="#" onclick="showSection('reward')" style="display: none;" id="rewardLink">Reward</a>
+                <% } %>
+                <% if (user.role === 'admin') { %>
+                    <h3>Hello Admin!</h3>
+                    <a href="#" onclick="showSectionAdmin('adminHome')"class="firstNav">Home</a>
+                    <a href="#" onclick="showSectionAdmin('allSchools')">Schools</a>
+                    <a href="#" onclick="showSectionAdmin('addReward')">Add rewards</a>
+                <% } %>
+            </div>
+            <% if (user.role === 'user') { %>
+            <div class="main-content">
+                <div class="notification">
+                    <p>New notifications will appear here.</p>
+                </div>
+                <!-- Home Section -->
+                <div id="home">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="analytics-box">
+                                <img src="/images/submission.png" alt="Submissions">
+                                <h4>Number of Submissions</h4>
+                                <p><%=submissionCount%></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="analytics-box">
+                                <img src="/images/weight.png" alt="Total Weight" class=img-fluid>
+                                <h4>Total Weights of Paper Submitted</h4>
+                                <p><%=totalWeight%></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="analytics-box">
+                                <img src="/images/rank2.png" alt="School Rank" class=img-fluid>
+                                <h4>Ranking of your school</h4>
+                                <p><%=schoolRank%></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="analytics-box">
+                                <img src="/images/reward.png" alt="Rewards" class=img-fluid>
+                                <h4>Number of Rewards Received</h4>
+                                <p><%=rewardCount%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Virtual Bin Section -->
+                <div id="virtualBin" class="hidden">
+                    <h3>Virtual Bin</h3>
+                    <!-- Add your Virtual Bin content here -->
+                    <div class="bin-container">
+                        <div class="bin-cover"> 
+                        </div>
+                    </div>
+                    <div class="points" data-bin-points="<%=binPoints%>"></div>
+                </div>
+                <!-- Rank Section -->
+                <div id="rank" class="hidden">
+                    <h3>Ladder Board</h3>
+                    <!-- Add your Rank content here -->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>School Name</th>
+                                    <th>Bin points</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rankTableBody">
+                                <!-- Rank data populated here are from the controller -->
+                                <% allRank.forEach(function(school) { %>
+                                    <tr>
+                                        <td><%= school.rank %></td>
+                                        <td><%= school.schoolName %></td>
+                                        <td><%= school.binPoints %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Reward Section -->
+                <div id="reward" class="hidden">
+                    <h3>Reward</h3>
+                    <!-- Add your Rank content here -->
+                    <div class="reward-content">
+                        <div class="reward-item">
+                            <div class="reward-details">
+                                <h4 id="rewardName"><%= aReward.name %>></h4>
+                                <p id="rewardDescription"><%= aReward.description %>></p>
+                            </div>
+                            <button id="claimButton" class="btn btn-custom">Claim Reward</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <% } %>
+
+            <!-- ADMIN VIEW -->
+            <% if (user.role === 'admin') { %>
+                <div class="main-content">
+                    <!-- Home Section -->
+                    <div id="adminHome">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="analytics-box">
+                                    <img src="/images/submission.png" alt="Submissions">
+                                    <h4>Number of Submissions</h4>
+                                    <p><%=submissionCount%></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="analytics-box">
+                                    <img src="/images/weight.png" alt="Total Weight" class=img-fluid>
+                                    <h4>Weights of Paper Submitted</h4>
+                                    <p><%=totalWeight%></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="analytics-box">
+                                    <img src="/images/rank2.png" alt="School Rank" class=img-fluid>
+                                    <h4>Number of Participating schools</h4>
+                                    <p><%=schoolRank%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- All schools here -->
+                    <div id="allSchools" class="hidden">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <h3>All schools</h3>
+                                <thead>
+                                    <tr>
+                                        <th>School Name</th>
+                                        <th>Bin points</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rankTableBody">
+                                    <!-- Rank data populated here are from the controller -->
+                                    <% allSchools.forEach(function(school) { %>
+                                        <tr>
+                                            <td><%= school.schoolName %></td>
+                                            <td><%= school.binPoints %></td>
+                                            <td><button class="btn btn-custom">Record weights</button></td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Upload Reward Section -->
+                    <div id="addReward" class="hidden">
+                        <h3>Rewards</h3>
+                        <!-- Add your Rank content here -->
+                    </div>
+                    
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="/styles/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('virtualBin').classList.add('hidden');
+            document.getElementById('rank').classList.add('hidden');
+            document.getElementById('reward').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function showSectionAdmin(sectionId) {
+            document.getElementById('adminHome').classList.add('hidden');
+            document.getElementById('allSchools').classList.add('hidden');
+            document.getElementById('addReward').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function binPoints() {
+            const points = document.querySelector('.points');
+            const bin = document.querySelector('.bin-cover');
+            const rewardLink = document.querySelector('#rewardLink');
+
+            // Get the binPoints value from data attribute
+            const binPointsValue = parseInt(points.getAttribute('data-bin-points'), 10);
+
+            // Display the points
+            points.textContent = binPointsValue + " Points";
+
+            // Define maximum points and maximum height for the bin
+            const maxPoints = 500;
+            const maxHeight = 370; // Maximum height in pixels
+
+            // Calculate bin height based on points
+            const binSize = (binPointsValue / maxPoints) * maxHeight;
+            bin.style.height = binSize + "px";
+
+            // Display the reward button if binPoints reach 500
+                if (binPointsValue === 500) {
+                    showSection('reward')
+                    rewardLink.style.display = "inline-block"
+                }
+        }
+        document.addEventListener('DOMContentLoaded', binPoints);
+
+    </script>
+</body>
+
+</html>
